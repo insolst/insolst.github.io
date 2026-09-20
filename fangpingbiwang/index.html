@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>防屏蔽网址-安全访问与合规内容分享指南</title>
+    <meta name="description" content="防屏蔽网址工具与内容分享平台，提供安全、稳定、合规的网页访问方案，帮助用户解决网络限制，保护隐私安全，同时严格遵守法律法规。">
+    <meta name="keywords" content="防屏蔽网址, 网络访问, 内容分享, 隐私保护, 安全工具">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-secondary: #64748b;
+            --border-color: #e2e8f0;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .nav-wrapper {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 64px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 24px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-secondary);
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+
+        .btn-nav {
+            padding: 8px 16px;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: background-color 0.2s;
+        }
+
+        .btn-nav:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: linear-gradient(135deg, #eff6ff 0%, #ffffff 100%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 14px 20px;
+            padding-right: 120px;
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            font-size: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            bottom: 6px;
+            padding: 0 20px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+        }
+
+        .search-btn:hover {
+            background-color: var(--primary-hover);
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding: 40px 0;
+        }
+
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            padding-bottom: 12px;
+            border-bottom: 2px solid var(--border-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .section-title span {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            border-bottom: none;
+        }
+
+        /* Cards Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-img-placeholder {
+            height: 160px;
+            background-color: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            font-size: 3rem;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .card-img-placeholder img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .card-body {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-tag {
+            display: inline-block;
+            padding: 4px 8px;
+            background-color: #eff6ff;
+            color: var(--primary-color);
+            border-radius: 4px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            width: fit-content;
+        }
+
+        .card-title {
+            font-size: 1.125rem;
+            margin-bottom: 8px;
+            font-weight: 700;
+        }
+
+        .card-desc {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-top: 1px solid var(--border-color);
+            padding-top: 16px;
+            margin-top: auto;
+        }
+
+        .card-link {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .card-link:hover {
+            text-decoration: underline;
+        }
+
+        /* Info Section */
+        .info-section {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 60px;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .info-content h3 {
+            margin-bottom: 16px;
+            color: var(--text-main);
+        }
+
+        .info-content p {
+            color: var(--text-secondary);
+            margin-bottom: 16px;
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-list li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+            color: var(--text-secondary);
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .info-list li::before {
+            content: "✓";
+            color: var(--success-color);
+            font-weight: bold;
+        }
+
+        .info-visual {
+            background-color: #f1f5f9;
+            border-radius: 8px;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        .flow-step {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.9rem;
+            color: var(--text-main);
+        }
+
+        .flow-line {
+            flex: 1;
+            height: 2px;
+            background-color: #cbd5e1;
+            position: relative;
+        }
+        
+        .flow-line::after {
+            content: '';
+            position: absolute;
+            right: 0;
+            top: -3px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-bg);
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .legal-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .legal-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.9rem;
+        }
+
+        .legal-links a:hover {
+            color: var(--primary-color);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container nav-wrapper">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+                SafeLink
+            </a>
+            <ul class="nav-links">
+                <li><a href="#">首页</a></li>
+                <li><a href="#">资源分类</a></li>
+                <li><a href="#">安全指南</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+            <a href="#" class="btn-nav">提交网址</a>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section class="hero">
+            <h1>突破限制，安全直达</h1>
+            <p>提供高效、稳定的防屏蔽网址访问方案，确保您在合规的前提下安全获取所需网络资源。</p>
+            <div class="search-box">
+                <input type="text" class="search-input" placeholder="输入关键词搜索可用网址..." aria-label="搜索防屏蔽网址">
+                <button class="search-btn">搜索</button>
+            </div>
+        </section>
+
+        <!-- Core Services Section -->
+        <section>
+            <div class="section-title">
+                <h2>核心服务</h2>
+                <span>安全合规的访问支持</span>
+            </div>
+            <div class="grid">
+                <article class="card">
+                    <div class="card-img-placeholder">
+                        <img src="https://picsum.photos/seed/tech1/400/200" alt="技术架构图示">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">智能解析</span>
+                        <h3 class="card-title">智能域名解析服务</h3>
+                        <p class="card-desc">采用先进的域名解析技术，优化网络路径，有效降低访问延迟，提升网页加载速度。</p>
+                        <div class="card-footer">
+                            <span style="color:var(--text-secondary); font-size:0.8rem;">响应时间 &lt; 200ms</span>
+                            <a href="#" class="card-link">查看详情 →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img-placeholder">
+                        <img src="https://picsum.photos/seed/tech2/400/200" alt="加密传输示意图">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">隐私保护</span>
+                        <h3 class="card-title">端到端加密传输</h3>
+                        <p class="card-desc">全站启用 SSL/TLS 加密协议，确保数据传输过程中的隐私安全，防止信息泄露。</p>
+                        <div class="card-footer">
+                            <span style="color:var(--text-secondary); font-size:0.8rem;">AES-256 加密</span>
+                            <a href="#" class="card-link">了解原理 →</a>
+                        </div>
+                    </div>
+                </article>
+
+                <article class="card">
+                    <div class="card-img-placeholder">
+                        <img src="https://picsum.photos/seed/tech3/400/200" alt="全球节点分布">
+                    </div>
+                    <div class="card-body">
+                        <span class="card-tag">全球加速</span>
+                        <h3 class="card-title">多节点智能调度</h3>
+                        <p class="card-desc">覆盖全球主要地区的服务器节点，自动选择最优线路，解决跨国访问不稳定问题。</p>
+                        <div class="card-footer">
+                            <span style="color:var(--text-secondary); font-size:0.8rem;">50+ 全球节点</span>
+                            <a href="#" class="card-link">查看节点 →</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- How it Works / Guide -->
+        <section class="info-section">
+            <div class="section-title">
+                <h2>使用指南</h2>
+                <span>简单三步，安全连接</span>
+            </div>
+            <div class="info-grid">
+                <div class="info-content">
+                    <h3>为什么选择合规的防屏蔽方案？</h3>
+                    <p>网络访问工具应当建立在合法合规的基础之上。我们的服务旨在帮助用户在遵守当地法律法规的前提下，解决因网络策略导致的正常访问需求，同时保障您的个人隐私和数据安全。</p>
+                    <ul class="info-list">
+                        <li><strong>严格合规：</strong> 所有服务均符合相关网络安全法律法规。</li>
+                        <li><strong>无日志政策：</strong> 承诺不记录用户浏览日志，保护用户隐私。</li>
+                        <li><strong>纯净体验：</strong> 无广告、无弹窗、无恶意插件，专注于访问效率。</li>
+                        <li><strong>7x24小时支持：</strong> 遇到问题随时联系客服，快速响应解决。</li>
+                    </ul>
+                </div>
+                <div class="info-visual">
+                    <div class="flow-step">
+                        <span>1. 选择服务</span>
+                        <div class="flow-line"></div>
+                    </div>
+                    <div class="flow-step">
+                        <span>2. 配置连接</span>
+                        <div class="flow-line"></div>
+                    </div>
+                    <div class="flow-step">
+                        <span>3. 安全访问</span>
+                    </div>
+                    <div style="margin-top:20px; text-align:center; color:var(--text-secondary); font-size:0.85rem;">
+                        支持主流浏览器及移动端设备
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Resource List / FAQ -->
+        <section>
+            <div class="section-title">
+                <h2>常见问题</h2>
+            </div>
+            <div class="grid" style="grid-template-columns: 1fr;">
+                <div style="background:white; padding:20px; border:1px solid var(--border-color); border-radius:8px; margin-bottom:12px;">
+                    <h4 style="margin-bottom:8px; color:var(--text-main);">Q: 使用防屏蔽网址是否合法？</h4>
+                    <p style="color:var(--text-secondary); font-size:0.95rem;">A: 本站提供的工具仅用于辅助合法合规的网络访问需求。用户需自行确保其访问的内容符合当地法律法规，严禁用于任何违法用途。</p>
+                </div>
+                <div style="background:white; padding:20px; border:1px solid var(--border-color); border-radius:8px;">
+                    <h4 style="margin-bottom:8px; color:var(--text-main);">Q: 如何保证连接的安全性？</h4>
+                    <p style="color:var(--text-secondary); font-size:0.95rem;">A: 我们采用军事级加密技术，并定期进行安全审计。所有数据传输均经过加密，第三方无法截获或篡改您的信息。</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container footer-content">
+            <div class="footer-text">
+                &copy; 2023 SafeLink 防屏蔽服务. All rights reserved.
+            </div>
+            <div class="legal-links">
+                <a href="#">服务条款</a>
+                <a href="#">隐私政策</a>
+                <a href="#">Cookie 设置</a>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
