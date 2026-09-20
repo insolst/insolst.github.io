@@ -1,0 +1,757 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="外国人唱红歌频道，收录全球歌手演绎中国经典红色歌曲、爱国歌曲及革命历史歌曲的精彩视频合集。包括中文学习、文化交流、跨文化合唱等内容。">
+    <meta name="keywords" content="外国人唱红歌,红歌,爱国歌曲,外国人唱中文歌,红色经典,跨文化合唱">
+    <title>外国人唱红歌 - 全球歌者演绎红色经典与爱国旋律</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #c8102e; /* 中国红 */
+            --secondary-color: #ffde00; /* 五星黄 */
+            --text-dark: #333333;
+            --text-gray: #666666;
+            --bg-light: #f9f9f9;
+            --bg-white: #ffffff;
+            --spacing-unit: 16px;
+            --container-width: 1200px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans SC", sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background-color: var(--bg-light);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header & Nav */
+        header {
+            background-color: var(--bg-white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 64px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo span {
+            color: var(--text-dark);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 24px;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .search-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+            color: var(--text-gray);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #c8102e 0%, #8a0b21 100%);
+            color: white;
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 32px;
+        }
+
+        .hero-tags {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .tag {
+            background: rgba(255,255,255,0.2);
+            padding: 6px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            backdrop-filter: blur(4px);
+        }
+
+        /* Main Layout */
+        .container {
+            max-width: var(--container-width);
+            margin: 40px auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 40px;
+        }
+
+        /* Video Grid */
+        .section-title {
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+            padding-left: 12px;
+            border-left: 5px solid var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+        }
+
+        .video-card {
+            background: var(--bg-white);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .video-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+
+        .thumbnail {
+            position: relative;
+            padding-top: 56.25%; /* 16:9 Aspect Ratio */
+            background-color: #000;
+        }
+
+        .thumbnail img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.9;
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 50px;
+            height: 50px;
+            background: rgba(0,0,0,0.6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+
+        .video-card:hover .play-icon {
+            background: var(--primary-color);
+        }
+
+        .play-icon::after {
+            content: '';
+            display: block;
+            width: 0;
+            height: 0;
+            border-left: 16px solid white;
+            border-top: 10px solid transparent;
+            border-bottom: 10px solid transparent;
+            margin-left: 4px;
+        }
+
+        .duration {
+            position: absolute;
+            bottom: 8px;
+            right: 8px;
+            background: rgba(0,0,0,0.8);
+            color: white;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card-title {
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            height: 2.4em;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-gray);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .channel-icon {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #eee;
+        }
+
+        /* Sidebar */
+        aside .sidebar-widget {
+            background: var(--bg-white);
+            padding: 24px;
+            border-radius: 8px;
+            margin-bottom: 24px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 16px;
+            color: var(--text-dark);
+            border-bottom: 2px solid var(--bg-light);
+            padding-bottom: 8px;
+        }
+
+        .playlist-item {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            padding-bottom: 16px;
+            border-bottom: 1px solid #eee;
+        }
+
+        .playlist-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .playlist-thumb {
+            width: 100px;
+            height: 56px;
+            background: #ddd;
+            border-radius: 4px;
+            overflow: hidden;
+            flex-shrink: 0;
+        }
+
+        .playlist-thumb img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .playlist-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+            line-height: 1.3;
+        }
+
+        .playlist-info span {
+            font-size: 0.8rem;
+            color: var(--text-gray);
+        }
+
+        .category-list li {
+            margin-bottom: 8px;
+        }
+
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 12px;
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .category-list a:hover {
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+        }
+
+        /* Introduction Section */
+        .intro-section {
+            background: var(--bg-white);
+            padding: 40px;
+            border-radius: 8px;
+            margin-bottom: 40px;
+            border-left: 4px solid var(--secondary-color);
+        }
+
+        .intro-section h2 {
+            margin-bottom: 16px;
+            color: var(--text-dark);
+        }
+
+        .intro-section p {
+            margin-bottom: 16px;
+            color: var(--text-gray);
+            text-align: justify;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            margin-bottom: 60px;
+        }
+
+        .faq-item {
+            background: var(--bg-white);
+            margin-bottom: 12px;
+            border-radius: 6px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            padding: 20px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #fff;
+        }
+
+        .faq-question:hover {
+            background-color: #f9f9f9;
+        }
+
+        .faq-answer {
+            padding: 0 20px 20px;
+            color: var(--text-gray);
+            display: none;
+            border-top: 1px solid #eee;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        .faq-icon {
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-icon {
+            transform: rotate(180deg);
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2c2c;
+            color: #ccc;
+            padding: 60px 0 20px;
+            margin-top: 60px;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-col h4 {
+            color: white;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid #444;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                height: auto;
+                padding: 16px;
+            }
+            nav ul {
+                margin-top: 16px;
+                gap: 16px;
+                font-size: 0.9rem;
+            }
+            .container {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            .intro-section {
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="nav-container">
+        <a href="#" class="logo">
+            <span>红歌</span>世界
+        </a>
+        <nav>
+            <ul>
+                <li><a href="#" class="active">首页</a></li>
+                <li><a href="#">最新视频</a></li>
+                <li><a href="#">分类浏览</a></li>
+                <li><a href="#">经典榜单</a></li>
+                <li><a href="#">关于我们</a></li>
+            </ul>
+        </nav>
+        <button class="search-btn" aria-label="搜索">🔍</button>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>外国人唱红歌</h1>
+    <p>汇聚全球歌者对红色经典与爱国旋律的深情演绎，跨越语言与国界，传递和平与友谊的歌声。</p>
+    <div class="hero-tags">
+        <span class="tag">中文教学</span>
+        <span class="tag">文化交流</span>
+        <span class="tag">合唱艺术</span>
+        <span class="tag">经典老歌</span>
+    </div>
+</section>
+
+<main class="container">
+    <!-- Main Content -->
+    <div class="main-content">
+        <section class="intro-section">
+            <h2>关于“外国人唱红歌”现象</h2>
+            <p>“外国人唱红歌”不仅是网络上的热门话题，更是中外文化交流的一种生动体现。近年来，越来越多的外国友人通过学习中文、了解中国历史，用歌声表达对中国文化的喜爱与敬意。这类视频通常包含纯正的中文发音练习、对革命历史歌曲的致敬，以及中外音乐风格的融合创作。</p>
+            <p>对于中文学习者而言，这些视频是极佳的听力素材；对于文化爱好者来说，这是观察不同国家民众价值观与审美趣味的窗口。我们致力于收录最优质、最具有代表性的跨文化演绎版本。</p>
+        </section>
+
+        <div class="section-title">
+            <h3>热门推荐</h3>
+            <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看全部 &rarr;</a>
+        </div>
+
+        <div class="video-grid">
+            <!-- Video Card 1 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/song1/400/225" alt="外国歌手唱红歌封面">
+                    <div class="play-icon"></div>
+                    <span class="duration">04:12</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">美国小伙深情演绎《我和我的祖国》，歌声震撼全场</h4>
+                    <div class="card-meta">
+                        <img src="https://picsum.photos/seed/icon1/40/40" class="channel-icon" alt="频道图标">
+                        <span>环球音乐频道</span>
+                        <span>•</span>
+                        <span>10万次播放</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 2 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/song2/400/225" alt="外国留学生合唱">
+                    <div class="play-icon"></div>
+                    <span class="duration">08:45</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">留学生合唱团：用《歌唱祖国》庆祝国庆，唱出中国情</h4>
+                    <div class="card-meta">
+                        <img src="https://picsum.photos/seed/icon2/40/40" class="channel-icon" alt="频道图标">
+                        <span>国际学生汇</span>
+                        <span>•</span>
+                        <span>5.2万次播放</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 3 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/song3/400/225" alt="外国朋友学中文">
+                    <div class="play-icon"></div>
+                    <span class="duration">03:30</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">零基础外国人挑战唱《东方红》，发音标准令人惊喜</h4>
+                    <div class="card-meta">
+                        <img src="https://picsum.photos/seed/icon3/40/40" class="channel-icon" alt="频道图标">
+                        <span>快乐学中文</span>
+                        <span>•</span>
+                        <span>8.9万次播放</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 4 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/song4/400/225" alt="跨文化合唱">
+                    <div class="play-icon"></div>
+                    <span class="duration">05:20</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">中法合唱团联合演出《我爱你中国》，旋律悠扬动人</h4>
+                    <div class="card-meta">
+                        <img src="https://picsum.photos/seed/icon4/40/40" class="channel-icon" alt="频道图标">
+                        <span>音乐无国界</span>
+                        <span>•</span>
+                        <span>12万次播放</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 5 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/song5/400/225" alt="老外唱红歌">
+                    <div class="play-icon"></div>
+                    <span class="duration">04:55</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">德国汉学家改编版《义勇军进行曲》，激昂有力展现历史</h4>
+                    <div class="card-meta">
+                        <img src="https://picsum.photos/seed/icon5/40/40" class="channel-icon" alt="频道图标">
+                        <span>文化观察室</span>
+                        <span>•</span>
+                        <span>6.7万次播放</span>
+                    </div>
+                </div>
+            </article>
+
+            <!-- Video Card 6 -->
+            <article class="video-card">
+                <div class="thumbnail">
+                    <img src="https://picsum.photos/seed/song6/400/225" alt="外国女孩唱红歌">
+                    <div class="play-icon"></div>
+                    <span class="duration">02:58</span>
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">外国小姐姐独唱《映山红》，婉转歌声打动无数网友</h4>
+                    <div class="card-meta">
+                        <img src="https://picsum.photos/seed/icon6/40/40" class="channel-icon" alt="频道图标">
+                        <span>每日金曲榜</span>
+                        <span>•</span>
+                        <span>15万次播放</span>
+                    </div>
+                </div>
+            </article>
+        </div>
+
+        <div class="section-title">
+            <h3>常见问题 (FAQ)</h3>
+        </div>
+        
+        <section class="faq-section">
+            <div class="faq-item">
+                <div class="faq-question">
+                    为什么很多外国人都喜欢唱红歌？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>红歌通常旋律优美、歌词积极向上，具有很强的艺术感染力。许多外国人在学习中文的过程中，选择红歌作为练习材料。同时，这些歌曲承载的历史情感和和平愿景也容易引起不同文化背景听众的共鸣。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    哪些红歌是最受外国人欢迎的？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>《我和我的祖国》、《歌唱祖国》、《我爱你中国》以及《映山红》等经典曲目，因其旋律朗朗上口且情感表达直接，成为了外国友人翻唱的热门选择。</p>
+                </div>
+            </div>
+            <div class="faq-item">
+                <div class="faq-question">
+                    在哪里可以找到更多外国人唱中文歌的视频？
+                    <span class="faq-icon">▼</span>
+                </div>
+                <div class="faq-answer">
+                    <p>您可以在本站浏览分类，或者在主流视频平台搜索“外国人唱红歌”、“Chinese songs cover by foreigners”等关键词，能发现大量优质的跨文化音乐内容。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title">热门歌单</h3>
+            
+            <div class="playlist-item">
+                <div class="playlist-thumb">
+                    <img src="https://picsum.photos/seed/pl1/100/56" alt="歌单封面">
+                </div>
+                <div class="playlist-info">
+                    <h4>2023外国人最爱的中国老歌</h4>
+                    <span>12 首歌曲</span>
+                </div>
+            </div>
+
+            <div class="playlist-item">
+                <div class="playlist-thumb">
+                    <img src="https://picsum.photos/seed/pl2/100/56" alt="歌单封面">
+                </div>
+                <div class="playlist-info">
+                    <h4>中文初学者必学红歌合集</h4>
+                    <span>8 首歌曲</span>
+                </div>
+            </div>
+
+            <div class="playlist-item">
+                <div class="playlist-thumb">
+                    <img src="https://picsum.photos/seed/pl3/100/56" alt="歌单封面">
+                </div>
+                <div class="playlist-info">
+                    <h4>国际友人国庆献礼专场</h4>
+                    <span>15 首歌曲</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title">歌曲分类</h3>
+            <ul class="category-list">
+                <li><a href="#">革命历史歌曲 <span>»</span></a></li>
+                <li><a href="#">抒情爱国歌曲 <span>»</span></a></li>
+                <li><a href="#">流行红歌翻唱 <span>»</span></a></li>
+                <li><a href="#">经典影视金曲 <span>»</span></a></li>
+                <li><a href="#">少儿红歌 <span>»</span></a></li>
+            </ul>
+        </div>
+
+        <div class="sidebar-widget">
+            <h3 class="sidebar-title">温馨提示</h3>
+            <p style="font-size: 0.9rem; color: #666; line-height: 1.5;">
+                本站内容来源于网络收集，仅供音乐欣赏与文化交流使用。如涉及版权问题，请联系我们删除。
+            </p>
+        </div>
+    </aside>
+</main>
+
+<footer>
+    <div class="footer-content">
+        <div class="footer-col">
+            <h4>红歌世界</h4>
+            <p style="font-size: 0.9rem; color: #999;">
+                专注于收录和分享全球歌者演绎中国经典红色歌曲的视频平台，致力于促进中外文化交流。
+            </p>
+        </div>
+        <div class="footer-col">
+            <h4>快速链接</h4>
+            <ul>
+                <li><a href="#">关于我们</a></li>
+                <li><a href="#">免责声明</a></li>
+                <li><a href="#">联系方式</a></li>
+                <li><a href="#">投稿合作</a></li>
+            </ul>
+        </div>
+        <div class="footer-col">
+            <h4>热门标签</h4>
+            <ul>
+                <li><a href="#">红歌</a></li>
+                <li><a href="#">爱国歌曲</a></li>
+                <li><a href="#">中文歌</a></li>
+                <li><a href="#">外国人唱中文</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="copyright">
+        <p>&copy; 2023 红歌世界. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<script>
+    // Simple FAQ Toggle Logic
+    document.querySelectorAll('.faq-question').forEach(item => {
+        item.addEventListener('click', event => {
+            const parent = item.parentElement;
+            parent.classList.toggle('active');
+        });
+    });
+</script>
+
+</body>
+                  </html>
