@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="冤罪专题页 - 揭示社会冤案背后的真相、经典冤案案例分析、法律援助指南与平反之路探讨。">
+    <meta name="keywords" content="冤罪,冤案,平反,法律援助,司法公正,刑讯逼供,错案">
+    <title>冤罪-司法公正与平反之路深度解读</title>
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #c0392b;
+            --bg-color: #f8f9fa;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-color: #e1e4e8;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+            line-height: 1.6;
+            color: var(--text-main);
+            background-color: var(--bg-color);
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Layout Utilities */
+        .container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+        }
+
+        .section-padding {
+            padding: 4rem 0;
+        }
+
+        /* Header */
+        header {
+            background-color: var(--card-bg);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 2rem;
+        }
+
+        nav a {
+            font-weight: 500;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--accent-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 6rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4xKSIvPjwvc3ZnPg==');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        .btn:hover {
+            background-color: #a93226;
+        }
+
+        .btn:active {
+            transform: scale(0.98);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid white;
+            margin-left: 1rem;
+        }
+
+        .btn-outline:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+        /* Core Concepts */
+        .concepts-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: -3rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .concept-card {
+            background: var(--card-bg);
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: transform 0.3s;
+        }
+
+        .concept-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .concept-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .concept-card h3 {
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background-color: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .section-header p {
+            color: var(--text-secondary);
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .case-card {
+            border: 1px solid var(--border-color);
+            border-radius: 8px;
+            overflow: hidden;
+            transition: box-shadow 0.3s;
+        }
+
+        .case-card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+
+        .case-image {
+            width: 100%;
+            height: 200px;
+            background-color: #eee;
+            object-fit: cover;
+        }
+
+        .case-content {
+            padding: 1.5rem;
+        }
+
+        .case-tag {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            padding: 0.2rem 0.6rem;
+            border-radius: 4px;
+            margin-bottom: 0.8rem;
+        }
+
+        .case-content h3 {
+            margin-bottom: 0.8rem;
+            font-size: 1.25rem;
+        }
+
+        .case-content p {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+        }
+
+        .case-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Causes & Prevention */
+        .causes-section {
+            background-color: var(--bg-color);
+        }
+
+        .causes-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .causes-image {
+            flex: 1;
+            min-width: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .causes-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .causes-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .causes-text h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+        }
+
+        .cause-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .cause-list li::before {
+            content: '•';
+            color: var(--accent-color);
+            font-weight: bold;
+            font-size: 1.5rem;
+            position: absolute;
+            left: 0;
+            top: -0.1rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background-color: white;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid var(--border-color);
+            padding: 1.5rem 0;
+        }
+
+        .faq-question {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--accent-color);
+            transition: transform 0.3s;
+        }
+
+        .faq-item.active .faq-question::after {
+            transform: rotate(45deg);
+        }
+
+        .faq-answer {
+            color: var(--text-secondary);
+            padding-top: 0.5rem;
+            display: none;
+            line-height: 1.7;
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .footer-col h4 {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 0.6rem;
+        }
+
+        .footer-col ul li a {
+            color: rgba(255,255,255,0.7);
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            margin-top: 3rem;
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.5);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            nav {
+                display: none; /* Simplified for single file demo */
+            }
+
+            .header-inner {
+                justify-content: center;
+            }
+
+            .causes-container {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                <span>冤罪</span>档案
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#cases">经典案例</a></li>
+                    <li><a href="#causes">成因分析</a></li>
+                    <li><a href="#help">法律援助</a></li>
+                    <li><a href="#faq">常见问题</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="container hero-content">
+                <h1>揭开司法迷雾<br>探寻被遗忘的真相</h1>
+                <p>冤罪不仅是法律的悲剧，更是对人性与信任的挑战。我们致力于记录、分析冤案成因，普及法律常识，为追求正义提供参考。</p>
+                <div class="hero-btns">
+                    <a href="#cases" class="btn">阅读案例</a>
+                    <a href="#help" class="btn btn-outline">了解如何申诉</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Core Concepts -->
+        <section class="container section-padding">
+            <div class="concepts-grid">
+                <article class="concept-card">
+                    <span class="concept-icon">⚖️</span>
+                    <h3>司法公正</h3>
+                    <p>冤罪是对司法公正的最大挑战。了解无罪推定原则，明白为何在现代法治社会中冤案仍会发生，以及如何通过程序正义来保障。</p>
+                </article>
+                <article class="concept-card">
+                    <span class="concept-icon">🛡️</span>
+                    <h3>证据审查</h3>
+                    <p>“疑罪从无”是现代刑法的基石。学习如何识别非法证据，理解口供与实物证据的效力差异，以及证据链的重要性。</p>
+                </article>
+                <article class="concept-card">
+                    <span class="concept-icon">🚑</span>
+                    <h3>平反之路</h3>
+                    <p>从国家赔偿到国家司法救助，冤案平反后受害者如何获得经济补偿与精神抚慰？探索申诉程序与维权的现实路径。</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- Case Studies -->
+        <section id="cases" class="case-studies section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>经典冤案分析</h2>
+                    <p>历史不会重演，但总会押着相同的韵脚。透过过往案例，汲取教训。</p>
+                </div>
+                <div class="case-grid">
+                    <article class="case-card">
+                        <img src="https://picsum.photos/seed/court1/400/250" alt="司法场景示意图" class="case-image">
+                        <div class="case-content">
+                            <span class="case-tag">刑讯逼供</span>
+                            <h3>米兰达诉亚利桑那州案</h3>
+                            <p>该案确立了著名的“米兰达警告”，旨在防止警方在审讯中使用非法手段获取口供，是现代刑事辩护的重要里程碑。</p>
+                            <a href="#" class="case-link">阅读详情 &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="case-card">
+                        <img src="https://picsum.photos/seed/court2/400/250" alt="证据分析示意图" class="case-image">
+                        <div class="case-content">
+                            <span class="case-tag">DNA技术</span>
+                            <h3>达米恩·埃利希特案</h3>
+                            <p>美国历史上第一个通过DNA证据被证明无罪并从死囚牢房释放的案例，彻底改变了证据鉴定的标准。</p>
+                            <a href="#" class="case-link">阅读详情 &rarr;</a>
+                        </div>
+                    </article>
+                    <article class="case-card">
+                        <img src="https://picsum.photos/seed/court3/400/250" alt="证人证词示意图" class="case-image">
+                        <div class="case-content">
+                            <span class="case-tag">目击证言</span>
+                            <h3>辛普森杀妻案</h3>
+                            <p>虽然是刑事审判中的无罪释放，但此案引发了全球对陪审团制度、目击证言可靠性以及警检关系的深刻反思。</p>
+                            <a href="#" class="case-link">阅读详情 &rarr;</a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Causes & Prevention -->
+        <section id="causes" class="causes-section section-padding">
+            <div class="container">
+                <div class="causes-container">
+                    <div class="causes-image">
+                        <img src="https://picsum.photos/seed/lawyer/600/400" alt="法律工作者分析文件">
+                    </div>
+                    <div class="causes-text">
+                        <h2>冤罪是如何发生的？</h2>
+                        <p style="margin-bottom: 1.5rem; color: var(--text-secondary);">
+                            冤案的形成往往是多重因素交织的结果。了解这些因素，有助于我们在日常生活中维护自身权益，避免陷入法律误区。
+                        </p>
+                        <ul class="cause-list">
+                            <li><strong>刑讯逼供与心理防线崩溃：</strong>在巨大压力下，嫌疑人可能被迫做出虚假供述，而后续的口供往往被过度依赖。</li>
+                            <li><strong>证人记忆偏差与指认错误：</strong>目击证人的记忆并非录像，受情绪、暗示和时间影响极大，错误的指认是冤案常见诱因。</li>
+                            <li><strong>司法偏见与有罪推定：</strong>一旦警方或检察官形成“有罪”的预判，可能会下意识忽略证据中的矛盾，或诱导证人。</li>
+                            <li><strong>技术局限与证据不足：</strong>在DNA技术普及前，缺乏科学手段验证嫌疑人是否在现场，导致“疑罪从有”。</li>
+                        </ul>
+                        <br>
+                        <a href="#" class="btn" style="background-color: var(--primary-color);">预防冤案指南</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal Aid Section -->
+        <section id="help" class="section-padding" style="background-color: white;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>遭遇不公？寻求帮助</h2>
+                    <p>如果您或您身边的人可能面临冤假错案风险，请参考以下法律途径。</p>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 2rem;">
+                    <div style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">申诉与再审</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">向人民法院或人民检察院提出申诉，请求重新审理案件。</p>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">法律援助</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">经济困难或盲聋哑人可申请免费律师辩护，维护合法权益。</p>
+                    </div>
+                    <div style="padding: 1.5rem; border: 1px solid var(--border-color); border-radius: 8px;">
+                        <h4 style="color: var(--accent-color); margin-bottom: 0.5rem;">国家赔偿</h4>
+                        <p style="font-size: 0.9rem; color: var(--text-secondary);">确认无罪后，依法申请国家赔偿，包括人身自由赔偿金等。</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ -->
+        <section id="faq" class="faq-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <h2>常见问题解答</h2>
+                </div>
+                <div class="faq-list">
+                    <div class="faq-item active">
+                        <div class="faq-question">如果被错误拘留，应该怎么做？</div>
+                        <div class="faq-answer">
+                            <p>首先保持冷静，不要在未了解清楚的情况下签署任何承认有罪的文件。在律师介入前，有权保持沉默。尽快联系家人或朋友安排律师，并要求会见律师。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">什么是“疑罪从无”原则？</div>
+                        <div class="faq-answer">
+                            <p>这是现代刑事诉讼的基本原则。当证据不足以证明被告人有罪，且无法排除合理怀疑时，应当做出被告人无罪的判决。这是防止冤案发生的关键防线。</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">冤案平反后，赔偿标准是怎样的？</div>
+                        <div class="faq-answer">
+                            <p>根据《国家赔偿法》，无罪被羁押的，侵犯人身自由的，每日赔偿金按照国家上年度职工日平均工资计算。此外，还可申请精神损害赔偿。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col" style="flex: 2; min-width: 300px;">
+                    <h4>冤罪档案</h4>
+                    <p style="color: rgba(255,255,255,0.7); margin-top: 0.5rem; max-width: 400px;">
+                        专注于记录与分析冤假错案，致力于推动法治进步与司法透明。我们相信，真相终将大白。
+                    </p>
+                </div>
+                <div class="footer-col">
+                    <h4>快速链接</h4>
+                    <ul>
+                        <li><a href="#">关于我们</a></li>
+                        <li><a href="#">免责声明</a></li>
+                        <li><a href="#">隐私政策</a></li>
+                        <li><a href="#">联系方式</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>法律资源</h4>
+                    <ul>
+                        <li><a href="#">国家赔偿法</a></li>
+                        <li><a href="#">刑事诉讼法</a></li>
+                        <li><a href="#">律师协会</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2023 冤罪档案网. All Rights Reserved. 本站内容仅供参考，不构成法律建议。
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple FAQ Accordion Logic
+        document.addEventListener('DOMContentLoaded', function() {
+            const faqItems = document.querySelectorAll('.faq-item');
+            
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+                question.addEventListener('click', () => {
+                    // Close other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
