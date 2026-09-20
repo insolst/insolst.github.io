@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>玩弄萝H小说-经典都市言情与情感故事大全</title>
+    <meta name="description" content="本站收录大量玩弄萝H小说资源，提供高清阅读体验与最新章节更新。包含都市情感、禁忌题材等丰富内容，满足读者阅读需求。">
+    <meta name="keywords" content="玩弄萝H小说,小说在线阅读,都市情感小说,情感故事大全">
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --accent-color: #e74c3c;
+            --bg-color: #f4f6f9;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-secondary: #666666;
+            --border-radius: 8px;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Header */
+        header {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-container {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .logo span {
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        nav a {
+            font-size: 1rem;
+            color: rgba(255,255,255,0.8);
+        }
+
+        nav a:hover, nav a.active {
+            color: white;
+            font-weight: 500;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #2c3e50 0%, #4ca1af 100%);
+            color: white;
+            padding: 3rem 1rem;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            max-width: 500px;
+            margin: 0 auto;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .search-box input {
+            flex: 1;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+
+        .search-box button {
+            padding: 0.8rem 1.5rem;
+            background-color: var(--accent-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+
+        .search-box button:hover {
+            background-color: #c0392b;
+        }
+
+        /* Main Layout */
+        .main-container {
+            max-width: var(--container-width);
+            margin: 2rem auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            gap: 2rem;
+            flex: 1;
+        }
+
+        /* Content Sections */
+        .section-title {
+            font-size: 1.4rem;
+            border-left: 4px solid var(--accent-color);
+            padding-left: 0.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-color);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .section-title a {
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            font-weight: normal;
+        }
+
+        .book-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .book-card {
+            background: var(--card-bg);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .book-cover {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            background-color: #eee;
+        }
+
+        .book-info {
+            padding: 1rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .book-title {
+            font-size: 1.1rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: var(--text-main);
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+        }
+
+        .book-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            flex: 1;
+        }
+
+        .book-tags span {
+            display: inline-block;
+            background-color: #f0f0f0;
+            color: #666;
+            font-size: 0.75rem;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 4px;
+        }
+
+        .read-btn {
+            display: block;
+            text-align: center;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            margin-top: auto;
+        }
+
+        .read-btn:hover {
+            background-color: #34495e;
+        }
+
+        /* Sidebar */
+        aside {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--card-bg);
+            padding: 1.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .sidebar-widget h3 {
+            font-size: 1.1rem;
+            margin-bottom: 1rem;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+
+        .category-list {
+            list-style: none;
+        }
+
+        .category-list li {
+            border-bottom: 1px solid #f9f9f9;
+        }
+
+        .category-list li:last-child {
+            border-bottom: none;
+        }
+
+        .category-list a {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.8rem 0;
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        .category-list a:hover {
+            color: var(--accent-color);
+            padding-left: 5px;
+        }
+
+        .rank-list {
+            counter-reset: rank;
+        }
+
+        .rank-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .rank-item::before {
+            counter-increment: rank;
+            content: counter(rank);
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            width: 20px;
+            height: 20px;
+            background-color: var(--accent-color);
+            color: white;
+            border-radius: 50%;
+            font-size: 0.75rem;
+            margin-right: 0.8rem;
+            flex-shrink: 0;
+        }
+
+        .rank-item:nth-child(4)::before, .rank-item:nth-child(5)::before, .rank-item:nth-child(6)::before {
+            background-color: #95a5a6;
+        }
+
+        .rank-info h4 {
+            font-size: 0.9rem;
+            margin-bottom: 0.2rem;
+        }
+
+        .rank-info p {
+            font-size: 0.8rem;
+            color: var(--text-secondary);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: rgba(255,255,255,0.7);
+            padding: 3rem 1rem;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .footer-links {
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a {
+            margin: 0 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .copyright {
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main-container {
+                grid-template-columns: 1fr;
+            }
+
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+                font-size: 0.9rem;
+            }
+
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <span>阅</span> 读天堂
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">最新更新</a></li>
+                    <li><a href="#">排行榜</a></li>
+                    <li><a href="#">分类浏览</a></li>
+                    <li><a href="#">全站搜索</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>探索情感世界的深度与广度</h1>
+        <p>收录海量玩弄萝H小说资源，为您提供沉浸式的阅读体验。从都市情感到禁忌题材，满足您对故事情节的所有想象。</p>
+        <div class="search-box">
+            <input type="text" placeholder="输入小说名称或作者...">
+            <button>搜索</button>
+        </div>
+    </section>
+
+    <main class="main-container">
+        <!-- Content Area -->
+        <div class="content-area">
+            
+            <!-- Section 1: Featured -->
+            <section>
+                <div class="section-title">
+                    <h2>今日精选推荐</h2>
+                    <a href="#">查看更多 &gt;</a>
+                </div>
+                <div class="book-grid">
+                    <article class="book-card">
+                        <img src="https://picsum.photos/seed/novel1/200/300" alt="小说封面" class="book-cover">
+                        <div class="book-info">
+                            <h3 class="book-title">错位的温柔：都市情感纠葛</h3>
+                            <div class="book-meta">
+                                <span>作者：墨染红尘</span> | <span>更新：2023-10-24</span>
+                            </div>
+                            <div class="book-tags">
+                                <span>都市</span>
+                                <span>情感</span>
+                                <span>虐恋</span>
+                            </div>
+                            <a href="#" class="read-btn">开始阅读</a>
+                        </div>
+                    </article>
+
+                    <article class="book-card">
+                        <img src="https://picsum.photos/seed/novel2/200/300" alt="小说封面" class="book-cover">
+                        <div class="book-info">
+                            <h3 class="book-title">禁忌的边界：午夜十点的邂逅</h3>
+                            <div class="book-meta">
+                                <span>作者：夜色微凉</span> | <span>更新：2023-10-23</span>
+                            </div>
+                            <div class="book-tags">
+                                <span>悬疑</span>
+                                <span>心理</span>
+                                <span>剧情</span>
+                            </div>
+                            <a href="#" class="read-btn">开始阅读</a>
+                        </div>
+                    </article>
+
+                    <article class="book-card">
+                        <img src="https://picsum.photos/seed/novel3/200/300" alt="小说封面" class="book-cover">
+                        <div class="book-info">
+                            <h3 class="book-title">深陷迷局：无法逃离的宿命</h3>
+                            <div class="book-meta">
+                                <span>作者：梦回江南</span> | <span>更新：2023-10-22</span>
+                            </div>
+                            <div class="book-tags">
+                                <span>剧情</span>
+                                <span>反转</span>
+                                <span>高分</span>
+                            </div>
+                            <a href="#" class="read-btn">开始阅读</a>
+                        </div>
+                    </article>
+
+                    <article class="book-card">
+                        <img src="https://picsum.photos/seed/novel4/200/300" alt="小说封面" class="book-cover">
+                        <div class="book-info">
+                            <h3 class="book-title">岁月无声：青春的遗憾与回响</h3>
+                            <div class="book-meta">
+                                <span>作者：时光旅人</span> | <span>更新：2023-10-21</span>
+                            </div>
+                            <div class="book-tags">
+                                <span>青春</span>
+                                <span>怀旧</span>
+                                <span>治愈</span>
+                            </div>
+                            <a href="#" class="read-btn">开始阅读</a>
+                        </div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- Section 2: Latest Updates -->
+            <section style="margin-top: 3rem;">
+                <div class="section-title">
+                    <h2>最新章节更新</h2>
+                    <a href="#">查看更多 &gt;</a>
+                </div>
+                <div class="book-list">
+                    <ul class="category-list">
+                        <li>
+                            <a href="#">
+                                <span>[第15章] 意外的转折</span>
+                                <span>10-24</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第12章] 心防的松动</span>
+                                <span>10-24</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第08章] 深夜的谈话</span>
+                                <span>10-23</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第20章] 冲突的爆发</span>
+                                <span>10-23</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第05章] 难以启齿的秘密</span>
+                                <span>10-22</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第11章] 重新审视关系</span>
+                                <span>10-22</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第09章] 欲望的边缘</span>
+                                <span>10-21</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <span>[第03章] 初次相遇</span>
+                                <span>10-21</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+
+        <!-- Sidebar Area -->
+        <aside>
+            <div class="sidebar-widget">
+                <h3>小说分类</h3>
+                <ul class="category-list">
+                    <li><a href="#">都市情感 <span>(128)</span></a></li>
+                    <li><a href="#">职场风云 <span>(86)</span></a></li>
+                    <li><a href="#">豪门恩怨 <span>(102)</span></a></li>
+                    <li><a href="#">禁忌题材 <span>(45)</span></a></li>
+                    <li><a href="#">悬疑推理 <span>(67)</span></a></li>
+                    <li><a href="#">青春校园 <span>(54)</span></a></li>
+                    <li><a href="#">奇幻冒险 <span>(32)</span></a></li>
+                    <li><a href="#">历史架空 <span>(78)</span></a></li>
+                </ul>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>热门榜单</h3>
+                <div class="rank-list">
+                    <div class="rank-item">
+                        <div class="rank-info">
+                            <h4>错位的温柔</h4>
+                            <p>收藏：2.3万</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-info">
+                            <h4>午夜十点的邂逅</h4>
+                            <p>收藏：1.9万</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-info">
+                            <h4>深陷迷局</h4>
+                            <p>收藏：1.7万</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-info">
+                            <h4>岁月无声</h4>
+                            <p>收藏：1.5万</p>
+                        </div>
+                    </div>
+                    <div class="rank-item">
+                        <div class="rank-info">
+                            <h4>无法逃离的宿命</h4>
+                            <p>收藏：1.2万</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sidebar-widget">
+                <h3>阅读提示</h3>
+                <p style="font-size: 0.9rem; color: #666; line-height: 1.6;">
+                    请读者在阅读时合理安排时间，注意保护视力。本站内容仅供个人娱乐参考，请勿用于非法用途。
+                </p>
+            </div>
+        </aside>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-links">
+                <a href="#">关于我们</a>
+                <a href="#">免责声明</a>
+                <a href="#">版权声明</a>
+                <a href="#">联系方式</a>
+                <a href="#">用户协议</a>
+            </div>
+            <p class="copyright">
+                Copyright © 2023 阅读天堂. All Rights Reserved. <br>
+                本站收录的资源均来自互联网，仅供学习交流使用。
+            </p>
+        </div>
+    </footer>
+
+</body>
+  </html>
