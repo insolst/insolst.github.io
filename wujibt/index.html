@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="无极bt - 提供BT种子下载、磁力链接检索、磁力搜索引擎及P2P资源分享服务。">
+    <meta name="keywords" content="无极bt, 磁力搜索, 种子下载, P2P资源, BT下载">
+    <title>无极bt - 极速磁力搜索引擎与资源下载平台</title>
+    <style>
+        :root {
+            --primary-color: #00e676;
+            --primary-hover: #00c853;
+            --bg-color: #121212;
+            --card-bg: #1e1e1e;
+            --text-main: #ffffff;
+            --text-secondary: #b0b0b0;
+            --border-color: #333333;
+            --spacing-unit: 1rem;
+            --container-width: 1200px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: color 0.2s;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(30, 30, 30, 0.95);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .header-inner {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo span {
+            color: var(--text-main);
+        }
+
+        nav ul {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            font-size: 0.95rem;
+            color: var(--text-secondary);
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 8px 16px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            border: none;
+        }
+
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: #000;
+            font-weight: 600;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-1px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--primary-color);
+            color: var(--primary-color);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            text-align: center;
+            background: radial-gradient(circle at center, #1a1a1a 0%, var(--bg-color) 70%);
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(90deg, #fff, #aaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero p {
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .search-box {
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 16px 24px;
+            padding-right: 140px;
+            font-size: 1.1rem;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 50px;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: var(--primary-color);
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 6px;
+            top: 6px;
+            bottom: 6px;
+            padding: 0 24px;
+            border-radius: 40px;
+        }
+
+        .tags {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .tag {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            background-color: #2c2c2c;
+            padding: 4px 12px;
+            border-radius: 20px;
+            cursor: pointer;
+        }
+
+        .tag:hover {
+            background-color: var(--primary-color);
+            color: #000;
+        }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            max-width: var(--container-width);
+            width: 100%;
+            margin: 0 auto;
+            padding: 40px var(--spacing-unit);
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            border-bottom: 1px solid var(--border-color);
+            padding-bottom: 12px;
+        }
+
+        .section-title {
+            font-size: 1.4rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 4px;
+            height: 20px;
+            background-color: var(--primary-color);
+            border-radius: 2px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+            border-color: #444;
+        }
+
+        .card-image {
+            width: 100%;
+            height: 160px;
+            background-color: #2a2a2a;
+            position: relative;
+        }
+
+        .card-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.8;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0,0,0,0.7);
+            color: var(--primary-color);
+            padding: 2px 8px;
+            font-size: 0.75rem;
+            border-radius: 4px;
+        }
+
+        .card-body {
+            padding: 16px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .card-title {
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+            line-height: 1.4;
+        }
+
+        .card-meta {
+            font-size: 0.85rem;
+            color: var(--text-secondary);
+            margin-bottom: 12px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .card-desc {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 16px;
+            display: -webkit-box;
+            -webkit-line-clamp: 2;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            flex: 1;
+        }
+
+        .card-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            margin-top: auto;
+        }
+
+        .card-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .btn-magnet {
+            background-color: #2a2a2a;
+            color: var(--text-main);
+            border: 1px solid #333;
+        }
+
+        .btn-magnet:hover {
+            background-color: #333;
+            border-color: #555;
+        }
+
+        .btn-info {
+            background-color: #2a2a2a;
+            color: var(--text-main);
+            border: 1px solid #333;
+        }
+
+        .btn-info:hover {
+            background-color: #333;
+            border-color: #555;
+        }
+
+        /* Feature List */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .feature-item {
+            text-align: center;
+            padding: 30px;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            border: 1px solid var(--border-color);
+        }
+
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .feature-title {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .feature-text {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0a0a0a;
+            border-top: 1px solid var(--border-color);
+            padding: 40px 0;
+            margin-top: auto;
+        }
+
+        .footer-content {
+            max-width: var(--container-width);
+            margin: 0 auto;
+            padding: 0 var(--spacing-unit);
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+        }
+
+        .footer-col h4 {
+            color: var(--text-main);
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--primary-color);
+        }
+
+        .copyright {
+            max-width: var(--container-width);
+            margin: 40px auto 0;
+            padding: 20px var(--spacing-unit);
+            text-align: center;
+            border-top: 1px solid #1a1a1a;
+            color: #555;
+            font-size: 0.85rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 1.8rem;
+            }
+            
+            .header-inner {
+                padding: 0 15px;
+            }
+
+            nav {
+                display: none; /* Mobile menu simplified for this demo */
+            }
+
+            .features {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-inner">
+            <a href="#" class="logo">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
+                <span>无极BT</span>
+            </a>
+            <nav>
+                <ul>
+                    <li><a href="#" class="active">首页</a></li>
+                    <li><a href="#">影视资源</a></li>
+                    <li><a href="#">游戏软件</a></li>
+                    <li><a href="#">电子书刊</a></li>
+                    <li><a href="#">高清纪录片</a></li>
+                </ul>
+            </nav>
+            <div class="header-actions">
+                <button class="btn btn-outline">登录</button>
+                <button class="btn btn-primary">注册</button>
+            </div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>极速磁力搜索引擎</h1>
+        <p>汇聚全网高清资源，提供安全、稳定的BT种子与磁力链接检索服务。支持电影、游戏、软件、书籍等多种资源类型搜索。</p>
+        
+        <div class="search-box">
+            <input type="text" class="search-input" placeholder="输入关键词搜索资源 (如: 漫威电影, Windows 11, 电子书)...">
+            <button class="btn btn-primary search-btn">搜索</button>
+        </div>
+
+        <div class="tags">
+            <span class="tag">最新电影</span>
+            <span class="tag">4K高清</span>
+            <span class="tag">蓝光原盘</span>
+            <span class="tag">Steam游戏</span>
+            <span class="tag">正版软件</span>
+            <span class="tag">电子书下载</span>
+        </div>
+    </section>
+
+    <main>
+        <!-- Hot Search / Recommendations -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">热门推荐</h2>
+                <a href="#" style="font-size: 0.9rem; color: var(--primary-color);">查看更多 &rarr;</a>
+            </div>
+            <div class="grid">
+                <!-- Card 1 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/movie1/400/250" alt="电影封面">
+                        <span class="card-badge">4K</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">沙丘2 - 蓝光原盘 [1080P/杜比视界]</h3>
+                        <div class="card-meta">
+                            <span>1.2TB</span>
+                            <span>2.3万人种</span>
+                        </div>
+                        <p class="card-desc">丹尼斯·维伦纽瓦执导科幻巨制，包含完整幕后花絮与原声碟，画质极佳。</p>
+                        <div class="card-actions">
+                            <a href="#" class="card-btn btn-magnet">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                磁力链接
+                            </a>
+                            <a href="#" class="card-btn btn-info">详情</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 2 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/game1/400/250" alt="游戏封面">
+                        <span class="card-badge">PC</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">赛博朋克2077 - 资源整合包 (含DLC+Mod)</h3>
+                        <div class="card-meta">
+                            <span>160GB</span>
+                            <span>8千人种</span>
+                        </div>
+                        <p class="card-desc">包含本体、所有DLC扩展包及常用功能Mod，无需安装器，直接解压运行。</p>
+                        <div class="card-actions">
+                            <a href="#" class="card-btn btn-magnet">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                磁力链接
+                            </a>
+                            <a href="#" class="card-btn btn-info">详情</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 3 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/book1/400/250" alt="书籍封面">
+                        <span class="card-badge">EPUB</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">尤利西斯 - 乔伊斯经典全集 (多格式)</h3>
+                        <div class="card-meta">
+                            <span>50MB</span>
+                            <span>5千人种</span>
+                        </div>
+                        <p class="card-desc">詹姆斯·乔伊斯代表作，包含英文原版及中文译本，支持Kindle与PDF阅读。</p>
+                        <div class="card-actions">
+                            <a href="#" class="card-btn btn-magnet">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                磁力链接
+                            </a>
+                            <a href="#" class="card-btn btn-info">详情</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Card 4 -->
+                <article class="card">
+                    <div class="card-image">
+                        <img src="https://picsum.photos/seed/tech1/400/250" alt="软件封面">
+                        <span class="card-badge">Win</span>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="card-title">Adobe 2024 全家桶官方原版 (免激活)</h3>
+                        <div class="card-meta">
+                            <span>15GB</span>
+                            <span>2万人种</span>
+                        </div>
+                        <p class="card-desc">Photoshop, Premiere Pro, Illustrator 等最新版本，安装程序纯净无广告。</p>
+                        <div class="card-actions">
+                            <a href="#" class="card-btn btn-magnet">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/><polyline points="16 6 12 2 8 6"/><line x1="12" y1="2" x2="12" y2="15"/></svg>
+                                磁力链接
+                            </a>
+                            <a href="#" class="card-btn btn-info">详情</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">平台优势</h2>
+            </div>
+            <div class="features">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <h3 class="feature-title">高速索引</h3>
+                    <p class="feature-text">采用分布式爬虫技术，实时收录全网最新BT种子，响应速度极快。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🛡️</div>
+                    <h3 class="feature-title">安全无毒</h3>
+                    <p class="feature-text">人工审核与AI双重过滤，确保提供的链接资源安全、无病毒、无恶意软件。</p>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">🔍</div>
+                    <h3 class="feature-title">精准搜索</h3>
+                    <p class="feature-text">支持标题、标签、文件大小等多维度搜索，快速定位所需资源。</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ Section -->
+        <section class="section">
+            <div class="section-header">
+                <h2 class="section-title">常见问题 (FAQ)</h2>
+            </div>
+            <div style="background-color: var(--card-bg); border-radius: 8px; border: 1px solid var(--border-color); padding: 24px;">
+                <details style="margin-bottom: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: var(--text-main);">如何使用磁力链接下载资源？</summary>
+                    <p style="margin-top: 8px; color: var(--text-secondary); padding-left: 1rem;">点击页面上的“磁力链接”按钮，系统会自动复制磁力哈希值。然后打开迅雷、BitComet或qBittorrent等下载工具，新建下载任务并粘贴磁力链接即可开始下载。</p>
+                </details>
+                <details style="margin-bottom: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: var(--text-main);">下载速度慢怎么办？</summary>
+                    <p style="margin-top: 8px; color: var(--text-secondary); padding-left: 1rem;">下载速度取决于您当前的网速以及该资源的做种人数。建议在高峰期使用，并确保您的下载软件开启了多线程下载功能。</p>
+                </details>
+                <details style="margin-bottom: 16px; cursor: pointer;">
+                    <summary style="font-weight: 600; color: var(--text-main);">网站资源是否合法？</summary>
+                    <p style="margin-top: 8px; color: var(--text-secondary); padding-left: 1rem;">本站仅提供资源的索引与搜索服务，不存储任何文件内容。资源版权归原作者或版权方所有，请下载后24小时内删除，勿用于商业用途。</p>
+                </details>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-col">
+                <a href="#" class="logo" style="margin-bottom: 15px; display: inline-block;">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M2 12h20M4.93 4.93l14.14 14.14M4.93 19.07L19.07 4.93"/></svg>
+                    <span>无极BT</span>
+                </a>
+                <p style="color: #666; font-size: 0.9rem; line-height: 1.6;">
+                    专注于提供优质的P2P资源搜索服务，致力于为用户打造高效、安全的数字资源获取平台。
+                </p>
+            </div>
+            <div class="footer-col">
+                <h4>资源分类</h4>
+                <ul>
+                    <li><a href="#">电影</a></li>
+                    <li><a href="#">电视剧</a></li>
+                    <li><a href="#">动漫</a></li>
+                    <li><a href="#">游戏</a></li>
+                    <li><a href="#">软件</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>帮助中心</h4>
+                <ul>
+                    <li><a href="#">使用教程</a></li>
+                    <li><a href="#">磁力原理</a></li>
+                    <li><a href="#">免责声明</a></li>
+                    <li><a href="#">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>关于我们</h4>
+                <ul>
+                    <li><a href="#">网站简介</a></li>
+                    <li><a href="#">隐私政策</a></li>
+                    <li><a href="#">加入我们</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2023-2024 无极BT资源站. All Rights Reserved. 本站资源仅供学习交流，请支持正版。
+        </div>
+    </footer>
+
+    <script type="text/javascript" src="https://cdn.bdwgg.com/mh.js"></script>
+</body>
+  </html>
